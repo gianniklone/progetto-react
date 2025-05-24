@@ -1,4 +1,4 @@
-import "../style/ErrorMessage.css";
+import "../style/ErrorMessage.scss";
 
 // Component that displays an error message
 const ErrorMessage = ({ message }) => {

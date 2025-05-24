@@ -4,6 +4,7 @@ import RecipeCard from "../components/RecipeCard";
 import SearchBar from "../components/SearchBar";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
+import { Helmet } from "react-helmet";
 
 // Main component for the homepage
 const Home = () => {
@@ -42,6 +43,13 @@ const Home = () => {
 
   return (
     <div className="container">
+      <Helmet>
+        <title>Ricette Vegetariane | Ricetta Vegetariana</title>
+        <meta
+          name="description"
+          content="Cerca e scopri ricette vegetariane gustose e salutari."
+        />
+      </Helmet>
       <h1>Vegetarian Recipes</h1>
       <SearchBar onSearch={handleRecipe} resetError={resetError} />
 
