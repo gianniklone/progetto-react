@@ -1,15 +1,15 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
 const RecipeContext = createContext();
 
 export const RecipeProvider = ({ children }) => {
-  const [ricette, setRicette] = useState([]);
+  const [recipe, setRecipe] = useState([]);
 
   return (
-    <RecipeContext.Provider value={{ ricette, setRicette }}>
+    <RecipeContext.Provider value={{ recipe, setRecipe }}>
       {children}
     </RecipeContext.Provider>
   );
 };
 
-export const useRicette = () => useContext(RecipeContext);
+export const useRecipe = () => useContext(RecipeContext);

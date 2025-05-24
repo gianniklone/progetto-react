@@ -1,22 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-// Componente che riceve uun oggetto  "ricetta" come prop
-// Mostra un immagine e il titolo dela ricetta in una card
-const RecipeCard = ({ricetta}) => {
-    return (
-
-                // Codice HTML  della visualizzazione della ricerca
-                
-        <div className="card">
-            <Link to={`/ricetta/${ricetta.id}`}>
-                <img src={ricetta.image} alt={ricetta.title} />
-            <div className='card-content'>
-                <h3>{ricetta.title}</h3>
-            </div>
-            </Link>
+// Component that receives a "recipe" object as prop
+// Displays an image and the recipe title in a card
+const RecipeCard = ({ recipe }) => {
+  return (
+    // HTML code for displaying the search result
+    <div className="card">
+      <Link to={`/recipe/${recipe.id}`}>
+        <img src={recipe.image} alt={recipe.title} />
+        <div className="card-content">
+          <h3>{recipe.title}</h3>
         </div>
-    )
-}
+      </Link>
+    </div>
+  );
+};
 
 export default RecipeCard;

@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-
-
-// Componente della  SearchBar ovvero la barra di ricerca
-// onSearch: funzione da chiamare quando  si   invia la ricerca
-// resetError: funziona per resettare eventuali errori
+// SearchBar component - the search input bar
+// onSearch: function to call when submitting the search
+// resetError: function to reset any error messages
 const SearchBar = ({ onSearch, resetError }) => {
-  // Statio locale per gestire il testo inserito nella barra di ricerca
-  const [input, setInput] = useState('');
+  // Local state to manage the text input value
+  const [input, setInput] = useState("");
 
-  // FUnzione chiamata quando si  invia il form
+  // Function called when the form is submitted
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
-      // CHiamata alla funzione passata come prop se l'input non è vuoto
+      // Call the onSearch prop function if input is not empty
       onSearch(input.trim());
     }
   };
@@ -22,13 +20,13 @@ const SearchBar = ({ onSearch, resetError }) => {
     <form onSubmit={handleSubmit} className="search-bar">
       <input
         type="text"
-        placeholder="Cerca un' ingrediente..."
+        placeholder="Search for an ingredient..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        className='search-bar'
+        className="search-bar"
         onFocus={resetError}
       />
-      <button type="submit">Cerca</button>
+      <button type="submit">Search</button>
     </form>
   );
 };

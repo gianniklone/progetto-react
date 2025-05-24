@@ -1,56 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getDettaglioRicetta } from '../api/spoonacular';
-import { Link } from 'react-router-dom';
-import '../style/RecipeDetail.css';
-import Loading from '../components/Loading'
-
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getRecipeDetails } from "../api/spoonacular";
+import { Link } from "react-router-dom";
+import "../style/RecipeDetail.css";
+import Loading from "../components/Loading";
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const [ricetta, setRicetta] = useState(null);
-  const [errore, setErrore] = useState(null);
+  const [recipe, setRecipe] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Quando il componente si monta o cambia l'id
+    // When component mounts or id changes
     const fetchData = async () => {
       try {
-        const dettaglio = await getDettaglioRicetta(id); // Chiamata API
-        setRicetta(dettaglio); // Aggiorna lo stato con la ricetta
+        const details = await getRecipeDetails(id); // API call
+        setRecipe(details); // Update state with recipe details
       } catch (err) {
-        console.error('Errore nel caricamento dettagli:', err);
-        setErrore('Errore nel caricamento dei dettagli della ricetta.');
+        console.error("Error loading details:", err);
+        setError("Error loading recipe details.");
       }
     };
     fetchData();
   }, [id]);
 
-  // Gestione errore
-  if (errore) return <p>{errore}</p>;
-  // Stato di caricamento
-  if (!ricetta) return <Loading />;
+  // Error handling
+  if (error) return <p>{error}</p>;
+  // Loading state
+  if (!recipe) return <Loading />;
 
-                        // Codice HTML della 
   return (
     <div className="recipe-detail-container">
       <Link to="/">
-        <button className="back-link" style={{ marginBottom: '1rem' }}>Torna alla ricerca</button>
+        <button className="back-link" style={{ marginBottom: "1rem" }}>
+          Back to search
+        </button>
       </Link>
-      <h2 className='recipe-summary'>{ricetta.title}</h2>
-      <img src={ricetta.image} alt={ricetta.title} />
-      <p><strong>Tempo di preparazione:</strong> {ricetta.readyInMinutes} minuti</p>
-      <p><strong>Porzioni:</strong> {ricetta.servings}</p>
-      <h3>Ingredienti</h3>
+      <h2 className="recipe-summary">{recipe.title}</h2>
+      <img src={recipe.image} alt={recipe.title} />
+      <p>
+        <strong>Preparation time:</strong> {recipe.readyInMinutes} minutes
+      </p>
+      <p>
+        <strong>Servings:</strong> {recipe.servings}
+      </p>
+      <h3>Ingredients</h3>
       <ol>
-        {ricetta.extendedIngredients.map((ingr) => (
+        {recipe.extendedIngredients.map((ingr) => (
           <li key={ingr.id}>{ingr.original}</li>
         ))}
       </ol>
-      {ricetta.instructions && (
+      {recipe.instructions && (
         <>
-          <h3>Istruzioni</h3>
-          <p>{ricetta.instructions}</p>
+          <h3>Instructions</h3>
+          <p>{recipe.instructions}</p>
         </>
       )}
     </div>

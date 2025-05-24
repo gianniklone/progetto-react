@@ -1,14 +1,12 @@
 import React from "react";
 
-
-
-// Componente che mostra il messaggio  di  caricamento
+// Component that shows the loading message
 const Loading = () => {
-    return(
-        <div style={{marginTop:"1rem", fontWeight:"bold", textAlign:"center"}}>
-            Caricamento in corso...
-        </div>
-    )
-}
+  return (
+    <div style={{ marginTop: "1rem", fontWeight: "bold", textAlign: "center" }}>
+      Loading...
+    </div>
+  );
+};
 
 export default Loading;

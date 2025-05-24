@@ -1,61 +1,59 @@
-import React, { useState } from 'react';
-import { cercaRicetteVegetariane } from '../api/spoonacular';
-import RecipeCard from '../components/RecipeCard';
-import SearchBar from '../components/SearchBar';
-import Loading from '../components/Loading';
-import Errore from '../components/Errore';
+import React, { useState } from "react";
+import { searchRecipeVegetarian } from "../api/spoonacular";
+import RecipeCard from "../components/RecipeCard";
+import SearchBar from "../components/SearchBar";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
 
-
-// Componente principale della homepage
+// Main component for the homepage
 const Home = () => {
-  // Stato per salvare le ricette  restituite dalla chiamata API
-  const [ricette, setRicette] = useState([]);
-  // Stato per gestire i messaggi di errore
-  const [errore, setErrore] = useState(null);
-  // Stato per la visualizzazione del  caricamento durante la chiamata  API
+  // State to store recipes returned from the API call
+  const [recipes, setRecipes] = useState([]);
+  // State to handle error messages
+  const [error, setError] = useState(null);
+  // State to show loading indicator during API calls
   const [loading, setLoading] = useState(false);
 
-  // Funzione asincrona per gestire la ricerca delle ricette
-  const gestisciRicerca = async (query) => {
-    setLoading(true) // Caricamento
+  // Async function to handle recipe search
+  const handleRecipe = async (query) => {
+    setLoading(true); // Start loading
     try {
-      const risultati = await cercaRicetteVegetariane(query);
-      if (risultati.length === 0) {     // Se l'array è vuoto, mostra errore
-        setErrore("Nessuna ricetta trovata per questo ingrediente.")
+      const result = await searchRecipeVegetarian(query);
+      if (result.length === 0) {
+        // If array is empty, show error
+        setError("No recipes found for this ingredient.");
+      } else {
+        setRecipes(result); // Save the recipes
+        setError(null); // Clear any previous errors
       }
-      else 
-      {setRicette(risultati);   // Salva le ricette
-      setErrore(null);}         // Rimuove gli evenntuali errori 
     } catch (err) {
-      // Errore generico se la ricerca fallisce
-      setErrore('Errore nella ricerca, riprova');
-      console.error('Errore nella ricerca:', err);
-    } finally{
-      setLoading(false);  // Nasconde il caricamento
+      // Generic error if search fails
+      setError("Search error, please try again.");
+      console.error("Search error:", err);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
-  // Funzione per resettare la barra di ricerca dopo aver ricevuto il messaggio d'errore
+  // Function to reset error when the search bar is focused
   const resetError = () => {
-    setErrore(null)
+    setError(null);
   };
 
   return (
+    <div className="container">
+      <h1>Vegetarian Recipes</h1>
+      <SearchBar onSearch={handleRecipe} resetError={resetError} />
 
-                            //Codice HTML della Home
-        <div className="container">
-        <h1>Ricette Vegetariane</h1>
-        <SearchBar onSearch={gestisciRicerca} resetError={resetError}/>
+      {loading && <Loading />}
+      {error && <ErrorMessage message={error} />}
 
-        {loading && <Loading />}
-        {errore && <Errore messaggio={errore} />}
-
-        <div className="grid">
-            {ricette.map((ricetta) => (
-            <RecipeCard key={ricetta.id} ricetta={ricetta} />
-            ))}
-        </div>
-        </div>
+      <div className="grid">
+        {recipes.map((recipe) => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
+        ))}
+      </div>
+    </div>
   );
 };
 

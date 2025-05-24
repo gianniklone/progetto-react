@@ -10,7 +10,7 @@ const api = axios.create({
   }
 });
 
-export const cercaRicetteVegetariane = async (query) => {
+export const searchRecipeVegetarian = async (query) => {
   const response = await api.get('/recipes/complexSearch', {
     params: {
       diet: 'vegetarian',
@@ -22,7 +22,7 @@ export const cercaRicetteVegetariane = async (query) => {
   return response.data.results;
 };
 
-export const getDettaglioRicetta = async (id) => {
+export const getRecipeDetails = async (id) => {
   const response = await api.get(`/recipes/${id}/information`, {
     params: {},
   });
