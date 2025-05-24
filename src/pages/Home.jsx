@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <div className="container">
       <Helmet>
-        <title>Ricette Vegetariane | Ricetta Vegetariana</title>
+        <title>Ricette Vegetariane</title>
         <meta
           name="description"
           content="Cerca e scopri ricette vegetariane gustose e salutari."
