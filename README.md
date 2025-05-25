@@ -1,43 +1,48 @@
-# Vegetarian Recipes App
+# 🥦 Vegetarian Recipes App
 
-Sito web dedicato agli appassionati di cucina vegetariana, che permette di cercare e visualizzare ricette vegetariane utilizzando l’API di Spoonacular.
+A website dedicated to vegetarian food lovers, allowing users to search and view vegetarian recipes using the Spoonacular API.
 
----
-
-## Descrizione
-
-Questa applicazione consente agli utenti di:
-
-- Cercare esclusivamente ricette vegetariane tramite una barra di ricerca.
-- Visualizzare per ogni ricetta il titolo e un’immagine di copertina.
-- Cliccare su una ricetta per accedere a una pagina dedicata con ulteriori dettagli.
-- Navigare in un’interfaccia semplice, pulita e user-friendly.
-- Usare un design responsive per una buona esperienza anche su dispositivi mobili.
+![screenshot](./screenshot.png) <!-- Puoi rimuovere o sostituire questa linea con un'immagine reale -->
 
 ---
 
-## Tecnologie utilizzate
+## 📖 Description
 
-- **React** con componenti funzionali e React Hooks
-- **React Router** per la gestione delle pagine e della navigazione
-- **Axios** per effettuare le chiamate HTTP all’API di Spoonacular
-- **Redux** o **Context API** per la gestione dello stato globale dell’applicazione
-- **CSS responsivo** per adattare il layout a diversi dispositivi
+This application allows users to:
 
----
-
-## Funzionalità
-
-- Barra di ricerca con filtro per ricette vegetariane (parametro specifico nell’API)
-- Lista dei risultati con titolo e immagine
-- Pagina dettaglio ricetta con informazioni aggiuntive (ingredienti, preparazione, ecc.)
-- Navigazione fluida tra pagine senza ricaricare
-- Interfaccia semplice e intuitiva
+- 🔍 Search exclusively for vegetarian recipes through a search bar  
+- 🖼️ View each recipe with its title and a cover image  
+- 📋 Click on a recipe to access a dedicated detail page  
+- 📱 Navigate through a clean, simple, and user-friendly interface  
+- 📲 Enjoy a responsive layout for both desktop and mobile devices  
 
 ---
 
-## Installazione e avvio
+## 🛠️ Technologies Used
 
-1. Clona il repository:
-   ```bash
-   git clone https://github.com/tuo-username/nome-repo.git
+- **React** (with functional components and Hooks)  
+- **React Router** for routing and page navigation  
+- **Axios** to fetch data from the Spoonacular API  
+- **Redux** or **Context API** for global state management  
+- **Responsive CSS** (with SCSS) for mobile-first design  
+
+---
+
+## ✨ Features
+
+- ✅ Vegetarian-only recipe filtering via the Spoonacular API  
+- ✅ Recipe list showing title and image  
+- ✅ Recipe detail page with ingredients, instructions, servings, and prep time  
+- ✅ Smooth navigation between views without full reloads  
+- ✅ SEO-friendly page titles using `react-helmet`  
+- ✅ Loading spinner and error handling  
+
+---
+
+## 🚀 Installation & Start
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
