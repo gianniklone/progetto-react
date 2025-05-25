@@ -2,8 +2,6 @@
 
 A website dedicated to vegetarian food lovers, allowing users to search and view vegetarian recipes using the Spoonacular API.
 
-![screenshot](./screenshot.png) <!-- Puoi rimuovere o sostituire questa linea con un'immagine reale -->
-
 ---
 
 ## 📖 Description
