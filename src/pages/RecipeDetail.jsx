@@ -60,7 +60,10 @@ const RecipeDetail = () => {
         {recipe.instructions && (
           <>
             <h3>Instructions</h3>
-            <p>{recipe.instructions}</p>
+            <div
+              className="recipe-instructions"
+              dangerouslySetInnerHTML={{ __html: recipe.instructions }}
+            />
           </>
         )}
       </div>
